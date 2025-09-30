@@ -300,11 +300,6 @@ st.subheader("Distribuição de Idade")
 fig_idade = px.histogram(df_filtrado, x="idade", color="status", barmode="group")
 st.plotly_chart(fig_idade, use_container_width=True)
 
-# Sexo / Estado Civil
-st.subheader("Aprovação por Sexo / Estado Civil")
-fig_sexo = px.bar(df_filtrado.groupby(["sexo_est_civil", "status"]).size().reset_index(name="count"),
-                  x="sexo_est_civil", y="count", color="status", barmode="group")
-st.plotly_chart(fig_sexo, use_container_width=True)
 
 # Tipo de residência e propriedade
 st.subheader("Propriedade e Tipo de Residência")
@@ -353,10 +348,6 @@ st.plotly_chart(fig_prop_emprest, use_container_width=True)
 # ==============================
 st.header("🔍 Visões Avançadas de Risco")
 
-# Default vs Número de Dependentes
-fig_dependentes = px.box(df_filtrado, x="status", y="n_dependentes", color="status", points="all")
-st.subheader("Aprovação vs Número de Dependentes")
-st.plotly_chart(fig_dependentes, use_container_width=True)
 
 # Default vs Número de Créditos no Banco
 fig_creditos = px.box(df_filtrado, x="status", y="n_creditos_banco", color="status", points="all")
@@ -397,13 +388,6 @@ plt.plot([0, 1], [0, 1], "k--", label="Aleatório")
 plt.legend(loc="lower right")
 plt.tight_layout()
 st.pyplot(plt.gcf())
-
-
-# ==============================
-# Tabela interativa de dados
-# ==============================
-st.header("📋 Dados Filtrados")
-st.dataframe(df_filtrado)
 
 
 # -----------------------------
